@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bre7gd2wjpojk"]
+
+[ext_resource type="Texture2D" uid="uid://cg753ya45p2l8" path="res://Elements/sdc15/catTest.png" id="1_70x2w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70x2w"]
+size = Vector2(204, 206)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.18842587, 0.18842587)
+texture = ExtResource("1_70x2w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_70x2w")
