@@ -28,6 +28,17 @@ window/stretch/aspect="ignore"
 
 project/assembly_name="Projeto D"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
+
+[input]
+
+"Clique Esquerdo"={
+"deadzone": 0.2,
+"events": []
+}
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=3
