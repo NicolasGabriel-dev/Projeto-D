@@ -1,19 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci1h1grdix8x2"]
+[gd_scene load_steps=6 format=3 uid="uid://ci1h1grdix8x2"]
 
+[ext_resource type="Script" uid="uid://pvj35ahusl72" path="res://Scripts/gun.gd" id="1_oqrbh"]
 [ext_resource type="Texture2D" uid="uid://bbr8oaystkbch" path="res://Assets/Zombie/01.png" id="2_oqrbh"]
+[ext_resource type="Texture2D" uid="uid://bggcxyceb6xa0" path="res://Assets/revoler.png" id="3_t6ynv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxj5y"]
 size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4teu"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(647, 316)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_oqrbh")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 texture = ExtResource("2_oqrbh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_nxj5y")
+disabled = true
 
 [node name="Node2D" type="Node2D" parent="CharacterBody2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_k4teu")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("3_t6ynv")
