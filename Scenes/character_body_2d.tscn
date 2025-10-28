@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcncvkrpaolob"]
+
+[ext_resource type="Texture2D" uid="uid://bggcxyceb6xa0" path="res://Assets/revoler.png" id="2_gbyq6"]
+[ext_resource type="Script" uid="uid://dtoxp33kgtqwr" path="res://sprite_2d.gd" id="3_pbq55"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(253, 257)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gbyq6")
+script = ExtResource("3_pbq55")
