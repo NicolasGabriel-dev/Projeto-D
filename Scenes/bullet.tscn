@@ -3,19 +3,16 @@
 [ext_resource type="Script" uid="uid://dro1tselq47nc" path="res://Scripts/bullet.gd" id="1_oduel"]
 [ext_resource type="Texture2D" uid="uid://bmeofff32st22" path="res://Assets/bullet.png" id="2_oduel"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oduel"]
-size = Vector2(0.9849999, 0.66551733)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oduel"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-scale = Vector2(10, 10)
 script = ExtResource("1_oduel")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3.393538, -2.642578)
-scale = Vector2(0.15161553, 0.14296871)
 texture = ExtResource("2_oduel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3.447, -2.677)
-scale = Vector2(1.45, 1.45)
-shape = SubResource("RectangleShape2D_oduel")
+position = Vector2(-0.25, 0)
+rotation = 1.5707964
+scale = Vector2(0.29, 0.29)
+shape = SubResource("CapsuleShape2D_oduel")

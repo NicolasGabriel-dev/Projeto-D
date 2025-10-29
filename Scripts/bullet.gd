@@ -1,13 +1,15 @@
 extends CharacterBody2D
-var pos: Vector2
-var rota:float
-var dir: float
-var speed = 2000
+
+@export var speed: float = 2000
+@export var lifetime: float = 2.0
+
+var direction: float
 
 func _ready():
-	global_position=pos
-	global_rotation=rota
-	
+	rotation = direction
+	await get_tree().create_timer(lifetime).timeout
+	queue_free()
+
 func _physics_process(delta):
-	velocity=Vector2(speed,0).rotated(dir)
+	velocity = Vector2.RIGHT.rotated(rotation) * speed
 	move_and_slide()
