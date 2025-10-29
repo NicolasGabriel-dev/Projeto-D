@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bwykvfnpindea" path="res://Fase1.png" id="1_ebmjs"]
 [ext_resource type="Texture2D" uid="uid://drub32vxys6kr" path="res://DeadTree/DeadBush.png" id="2_qxrlw"]
 [ext_resource type="Texture2D" uid="uid://6uh6cgo6f3a" path="res://Fonte.png" id="2_wrm1d"]
-[ext_resource type="Texture2D" uid="uid://bbr8oaystkbch" path="res://Assets/Zombie/01.png" id="4_3dryh"]
+[ext_resource type="PackedScene" uid="uid://6xx1q8dlwcvt" path="res://Scenes/player.tscn" id="5_wowpa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
 texture = ExtResource("2_qxrlw")
@@ -42,6 +42,4 @@ scale = Vector2(20, 20)
 tile_map_data = PackedByteArray("AAAbACAAAAAAAAEAAAAVABQAAAAEAAUAAAALABYAAAAFAAMAAAAgABoAAAAIAAYAAAAMAB8AAAAIAAYAAAAbAAUAAAABAAUAAAARAB0AAAAIAAAAAAAHAB0AAAAAAAEAAAAYACAAAAABAAUAAAAIABQAAAAAAAEAAAAQABUAAAABAAUAAAAaABcAAAAAAAEAAAAWABUAAAAIAAAAAAAHABAAAAABAAUAAAAhABgAAAAIAAAAAAAVABwAAAAAAAEAAAAVAB0AAAAIAAYAAAARABkAAAAIAAAAAAAVABgAAAAFAAMAAAAgAAQAAAAIAAAAAAAfAAYAAAAFAAMAAAAPABQAAAAAAAEAAAAEABUAAAAIAAAAAAAOABoAAAAEAAUAAAAbAA0AAAAEAAUAAAAZAAwAAAAFAAMAAAAdAA4AAAABAAUAAAAZAA8AAAAAAAEAAAAHAAcAAAAIAAYAAAAFAAoAAAAAAAEAAAAGAAwAAAAFAAMAAAAHAAsAAAAIAAYAAAAIABwAAAAFAAMAAAANAAQAAAAEAAUAAAALAAYAAAABAAUAAAAgAAoAAAAIAAYAAAAKABQAAAAIAAAAAAAHACAAAAABAAUAAAAJAA8AAAAAAAEAAAAQAAsAAAAEAAUAAAAeABMAAAAIAAAAAAAWABAAAAAFAAMAAAAaAB8AAAAIAAYAAAAVAAoAAAABAAUAAAAJAAYAAAAEAAUAAAAFACAAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_3dryh")
 
-[node name="01" type="Sprite2D" parent="."]
-position = Vector2(3706, 5082)
-texture = ExtResource("4_3dryh")
+[node name="sdc15" parent="." instance=ExtResource("5_wowpa")]
