@@ -32,6 +32,7 @@ size = Vector2(27, 45)
 
 [node name="sdc15" type="CharacterBody2D"]
 script = ExtResource("1_6t5aa")
+metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
@@ -45,3 +46,9 @@ animation = &"Estático"
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, -3.5)
 shape = SubResource("RectangleShape2D_vgqql")
+
+[node name="HandRight" type="Marker2D" parent="."]
+position = Vector2(12, 2)
+
+[node name="HandLeft" type="Marker2D" parent="."]
+position = Vector2(-15, 2)

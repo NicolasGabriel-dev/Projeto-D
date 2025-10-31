@@ -10,9 +10,6 @@ var bullet_count: int = 0
 var can_shoot: bool = true
 var is_reloading: bool = false
 
-func _ready() -> void:
-	position =  Vector2(300, 240)
-
 func _process(delta: float) -> void:
 	if is_reloading:
 		rotate(max_bullets * (PI*2 *delta)/reload_time)

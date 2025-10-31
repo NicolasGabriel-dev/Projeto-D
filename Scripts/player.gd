@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
-@export var speed = 200
 @onready var _animation_player: AnimatedSprite2D = $animatedSprite
+@export var speed = 200
+@export var gun: PackedScene = preload("res://Scenes/gun.tscn")
 
-func get_input():
-	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	velocity = input_direction * speed
+func _ready() -> void:
+	spawn_gun($HandLeft.position)
+	spawn_gun($HandRight.position)
 
-func _process(_delta):
+func _process(delta: float) -> void:
 	get_input()
 	move_and_slide()
 	if Input.is_action_pressed("ui_right"):
@@ -20,5 +21,12 @@ func _process(_delta):
 		_animation_player.play("Movimento")
 	else:
 		_animation_player.stop()
-		
-		
+
+func get_input():
+	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	velocity = input_direction * speed
+
+func spawn_gun(hand_position: Vector2) -> void:
+		var gun_instance = gun.instantiate()
+		gun_instance.position = hand_position
+		add_child(gun_instance)

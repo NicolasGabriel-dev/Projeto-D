@@ -27,8 +27,7 @@ sources/0 = SubResource("TileSetAtlasSource_wrm1d")
 [node name="Node2D" type="Node2D"]
 
 [node name="Scenario" type="Sprite2D" parent="."]
-position = Vector2(6073, 6070)
-scale = Vector2(11.8643, 11.8643)
+scale = Vector2(5, 5)
 texture = ExtResource("1_ebmjs")
 
 [node name="Fonte" type="Sprite2D" parent="."]
@@ -43,4 +42,3 @@ tile_map_data = PackedByteArray("AAAbACAAAAAAAAEAAAAVABQAAAAEAAUAAAALABYAAAAFAAM
 tile_set = SubResource("TileSet_3dryh")
 
 [node name="sdc15" parent="." instance=ExtResource("5_wowpa")]
-speed = 200
