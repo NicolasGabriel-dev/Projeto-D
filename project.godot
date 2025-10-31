@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="Projeto D"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+run/main_scene="uid://6xx1q8dlwcvt"
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
@@ -26,6 +27,10 @@ window/stretch/aspect="ignore"
 [dotnet]
 
 project/assembly_name="Projeto D"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
 
 [input]
 

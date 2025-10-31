@@ -1,15 +1,21 @@
-extends CharacterBody2D
+extends Area2D
 
-@export var speed: float = 2000
 @export var lifetime: float = 2.0
+var move: Vector2
+var life_timer: float = 0.0
 
-var direction: float
+func setMoveAndShow(speed: float, direction: float) -> void:
+	# direction é um ângulo em radianos
+	move = Vector2.RIGHT.rotated(direction) * speed
+	#rotation = direction
 
-func _ready():
-	rotation = direction
-	await get_tree().create_timer(lifetime).timeout
-	queue_free()
+func setPosition(pos):
+	position = pos
+func setRotation(rot):
+	rotation = rot
 
-func _physics_process(delta):
-	velocity = Vector2.RIGHT.rotated(rotation) * speed
-	move_and_slide()
+func _process(delta: float) -> void:
+	position += move * delta
+	life_timer += delta
+	if life_timer >= lifetime:
+		queue_free()
