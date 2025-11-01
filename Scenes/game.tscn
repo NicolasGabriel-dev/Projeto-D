@@ -33,6 +33,7 @@ point_count = 5
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_wowpa")
+metadata/_edit_group_ = true
 
 [node name="Scenario" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)

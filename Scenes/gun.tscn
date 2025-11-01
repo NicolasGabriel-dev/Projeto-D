@@ -9,6 +9,8 @@
 disable_mode = 2
 script = ExtResource("3_pbq55")
 bullet_speed = 1000.0
+fire_rate = 0.2
+reload_time = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_gbyq6")

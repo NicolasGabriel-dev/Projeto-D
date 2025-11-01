@@ -5,12 +5,14 @@ signal zombie_hit
 @onready var _animation_player: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var live: int = 2
-@export var speed: float = 2.0
+@export var speed_main: float = 2.0
+@export var focus_aceleration = false
+@export var stop_on_focus = false
 var keep_target: Node2D
 var target = Vector2(0,0)
 var is_hitting: bool = false
 var is_unfocused: bool = true
-
+var speed = speed_main
 
 func _process(delta: float) -> void:
 	if keep_target and is_unfocused:
@@ -23,22 +25,25 @@ func _process(delta: float) -> void:
 		
 func focusOnPosition(tar: Vector2):
 	is_unfocused = false
-	$FocusTime.start(0.1)
+	$FocusTime.start() #altere no FocusTimer
 	#velocity = Vector2(0,0)
 	target = tar
-	#if speed >= 0: 
-		#speed += randf_range(-5, 5)
-	#if speed > 0.5 && speed < 8.0:
-		#speed *= randf_range(0.5, 2.0)
-	#else:
-		#speed = 3.0
+	if focus_aceleration:
+		if speed >= 0: 
+			speed += randf_range(-0.5, 2)
+		if speed > 0.5 && speed < 4.0:
+			speed *= randf_range(0.5, 2.0)
+		else:
+			speed = speed_main
 	await $FocusTime.timeout
 	is_unfocused = true
 
 func move() ->void:
 	if position.distance_to(target) > 10:
+		var moviment = Vector2.RIGHT.rotated(get_angle_to(target))
+		_animation_player.flip_h = moviment.x < 0
 		_animation_player.play()
-		position += Vector2.RIGHT.rotated(get_angle_to(target)) *speed
+		position += moviment * speed
 	else:
 		_animation_player.stop()
 
