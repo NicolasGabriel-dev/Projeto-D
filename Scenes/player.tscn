@@ -28,7 +28,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
-size = Vector2(27, 45)
+size = Vector2(20, 15)
 
 [node name="sdc15" type="CharacterBody2D"]
 script = ExtResource("1_6t5aa")
@@ -44,7 +44,7 @@ sprite_frames = SubResource("SpriteFrames_x3wgy")
 animation = &"Estático"
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, -3.5)
+position = Vector2(-2, 6.5)
 shape = SubResource("RectangleShape2D_vgqql")
 
 [node name="HandRight" type="Marker2D" parent="."]

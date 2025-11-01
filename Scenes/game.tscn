@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://bwny1c4xs3aj0"]
+[gd_scene load_steps=9 format=4 uid="uid://bwny1c4xs3aj0"]
 
 [ext_resource type="Texture2D" uid="uid://bwykvfnpindea" path="res://Assets/Fase1.png" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://dksghxqgk46fv" path="res://Scripts/game.gd" id="1_wowpa"]
 [ext_resource type="Texture2D" uid="uid://drub32vxys6kr" path="res://DeadTree/DeadBush.png" id="2_qxrlw"]
 [ext_resource type="Texture2D" uid="uid://6uh6cgo6f3a" path="res://Assets/Fonte.png" id="2_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://6xx1q8dlwcvt" path="res://Scenes/player.tscn" id="5_wowpa"]
@@ -24,21 +25,44 @@ use_texture_padding = false
 [sub_resource type="TileSet" id="TileSet_3dryh"]
 sources/0 = SubResource("TileSetAtlasSource_wrm1d")
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="Curve2D" id="Curve2D_wowpa"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3064, -1.86416, 0, 0, 0, 0, 3040, -273.587, 0, 0, 0, 0, -21, -273.587, 0, 0, 0, 0, -21, 0.976464, 0, 0, 0, 0, 3064, -1.86416)
+}
+point_count = 5
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_wowpa")
 
 [node name="Scenario" type="Sprite2D" parent="."]
-scale = Vector2(5, 5)
+scale = Vector2(3, 3)
 texture = ExtResource("1_ebmjs")
+centered = false
 
 [node name="Fonte" type="Sprite2D" parent="."]
-position = Vector2(6100, 5813)
-scale = Vector2(2.00043, 2.00043)
+position = Vector2(1550, 1475)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_wrm1d")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
 rotation = -0.000795173
-scale = Vector2(20, 20)
+scale = Vector2(5, 5)
 tile_map_data = PackedByteArray("AAAbACAAAAAAAAEAAAAVABQAAAAEAAUAAAALABYAAAAFAAMAAAAgABoAAAAIAAYAAAAMAB8AAAAIAAYAAAAbAAUAAAABAAUAAAARAB0AAAAIAAAAAAAHAB0AAAAAAAEAAAAYACAAAAABAAUAAAAIABQAAAAAAAEAAAAQABUAAAABAAUAAAAaABcAAAAAAAEAAAAWABUAAAAIAAAAAAAHABAAAAABAAUAAAAhABgAAAAIAAAAAAAVABwAAAAAAAEAAAAVAB0AAAAIAAYAAAARABkAAAAIAAAAAAAVABgAAAAFAAMAAAAgAAQAAAAIAAAAAAAfAAYAAAAFAAMAAAAPABQAAAAAAAEAAAAEABUAAAAIAAAAAAAOABoAAAAEAAUAAAAbAA0AAAAEAAUAAAAZAAwAAAAFAAMAAAAdAA4AAAABAAUAAAAZAA8AAAAAAAEAAAAHAAcAAAAIAAYAAAAFAAoAAAAAAAEAAAAGAAwAAAAFAAMAAAAHAAsAAAAIAAYAAAAIABwAAAAFAAMAAAANAAQAAAAEAAUAAAALAAYAAAABAAUAAAAgAAoAAAAIAAYAAAAKABQAAAAIAAAAAAAHACAAAAABAAUAAAAJAA8AAAAAAAEAAAAQAAsAAAAEAAUAAAAeABMAAAAIAAAAAAAWABAAAAAFAAMAAAAaAB8AAAAIAAYAAAAVAAoAAAABAAUAAAAJAAYAAAAEAAUAAAAFACAAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_3dryh")
 
 [node name="sdc15" parent="." instance=ExtResource("5_wowpa")]
+position = Vector2(1550, 1650)
+scale = Vector2(1.01233, 1)
+
+[node name="ZombiePath" type="Path2D" parent="."]
+scale = Vector2(1, -11.2651)
+curve = SubResource("Curve2D_wowpa")
+
+[node name="ZombieSpawnLocation" type="PathFollow2D" parent="ZombiePath"]
+position = Vector2(3064, -1.86416)
+rotation = -1.65889
+
+[node name="ZombieTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ZombieTimer" to="." method="zombie_timeout"]

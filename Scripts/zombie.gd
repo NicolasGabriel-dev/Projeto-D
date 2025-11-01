@@ -1,41 +1,25 @@
 extends CharacterBody2D
  
-signal hit
+signal zombie_hit
 
 @onready var _animation_player: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var live: int = 2
-@export var speed: float = 3.0
-var keep_target: Vector2
+@export var speed: float = 2.0
+var keep_target: Node2D
 var target = Vector2(0,0)
 var is_hitting: bool = false
 var is_unfocused: bool = true
 
 
 func _process(delta: float) -> void:
+	if keep_target and is_unfocused:
+		focusOnPosition(keep_target.global_position)
 	move()
-	if is_unfocused:
-		focusOnPosition(get_global_mouse_position())
-	#else:
-		#move()
-		
+	
 #func _ready() -> void:
 	#keep_target = get_global_mouse_position()
 
-func set_target(tar):
-	keep_target = tar
-
-func attack() -> void:
-	is_hitting = true
-	hit.emit(get_tree())
-	$AttackCooldown.start()
-	await $AttackCooldown.timeout
-	is_hitting = false
-
-func be_attacked(damage):
-	live -= damage
-	if live <= 0:
-		queue_free()
 		
 func focusOnPosition(tar: Vector2):
 	is_unfocused = false
@@ -57,3 +41,25 @@ func move() ->void:
 		position += Vector2.RIGHT.rotated(get_angle_to(target)) *speed
 	else:
 		_animation_player.stop()
+
+
+func set_target(tar: Node2D):
+	keep_target = tar
+
+func attack() -> void:
+	is_hitting = true
+	zombie_hit.emit(get_tree())
+	$AttackCooldown.start()
+	await $AttackCooldown.timeout
+	is_hitting = false
+
+func be_attacked(damage: int) -> void:
+	live -= damage
+	modulate = Color(1, 0.5, 0.5)  # efeito visual: fica avermelhado
+	await get_tree().create_timer(0.1).timeout
+	modulate = Color(1, 1, 1)
+	if live <= 0:
+		die()
+
+func die():
+	queue_free()
