@@ -38,14 +38,37 @@ func focusOnPosition(tar: Vector2):
 	await $FocusTime.timeout
 	is_unfocused = true
 
-func move() ->void:
+func move() -> void:
 	if position.distance_to(target) > 10:
 		var moviment = Vector2.RIGHT.rotated(get_angle_to(target))
+
 		_animation_player.flip_h = moviment.x < 0
 		_animation_player.play()
-		position += moviment * speed
+
+		# movimento físico
+		velocity = moviment * speed
+
+		# tenta mover e detectar colisão
+		var collision = move_and_collide(velocity)
+
+		# se colidiu, trate aqui
+		if collision:
+			_on_collision(collision.get_collider())
+
 	else:
+		velocity = Vector2.ZERO
 		_animation_player.stop()
+
+func _on_collision(collider):
+	if collider.is_in_group("player"):
+		print("Colidiu com o player!")
+		attack()
+
+	if collider.is_in_group("wall"):
+		print("Bateu na parede!")
+		# exemplo: pare o movimento
+		velocity = Vector2.ZERO
+
 
 
 func set_target(tar: Node2D):

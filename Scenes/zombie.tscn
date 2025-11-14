@@ -30,8 +30,10 @@ animation = &"Movimento"
 frame_progress = 0.673472
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+physics_interpolation_mode = 1
 position = Vector2(-1, 1.5)
 shape = SubResource("RectangleShape2D_iyl7r")
+one_way_collision = true
 
 [node name="AttackCooldown" type="Timer" parent="."]
 

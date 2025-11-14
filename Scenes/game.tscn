@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bwny1c4xs3aj0"]
+[gd_scene load_steps=11 format=4 uid="uid://bwny1c4xs3aj0"]
 
 [ext_resource type="Texture2D" uid="uid://bwykvfnpindea" path="res://Assets/Fase1.png" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://dksghxqgk46fv" path="res://Scripts/game.gd" id="1_wowpa"]
@@ -7,32 +7,44 @@
 [ext_resource type="PackedScene" uid="uid://6xx1q8dlwcvt" path="res://Scenes/player.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://cxcaglyd5lilq" path="res://Scenes/hud.tscn" id="6_i6g32"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
-texture = ExtResource("2_qxrlw")
-use_texture_padding = false
-8:0/size_in_atlas = Vector2i(4, 4)
-8:0/0 = 0
-5:3/size_in_atlas = Vector2i(3, 1)
-5:3/0 = 0
-0:1/size_in_atlas = Vector2i(4, 3)
-0:1/0 = 0
-1:5/size_in_atlas = Vector2i(3, 3)
-1:5/0 = 0
-4:5/size_in_atlas = Vector2i(4, 3)
-4:5/0 = 0
-8:6/size_in_atlas = Vector2i(4, 2)
-8:6/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_3dryh"]
-sources/0 = SubResource("TileSetAtlasSource_wrm1d")
-
 [sub_resource type="Curve2D" id="Curve2D_wowpa"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 3064, -1.86416, 0, 0, 0, 0, 3040, -273.587, 0, 0, 0, 0, -21, -273.587, 0, 0, 0, 0, -21, 0.976464, 0, 0, 0, 0, 3064, -1.86416)
 }
 point_count = 5
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i6g32"]
+radius = 69.0
+height = 306.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
+texture = ExtResource("2_qxrlw")
+use_texture_padding = false
+8:0/size_in_atlas = Vector2i(4, 4)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(4.856186, 16.00743, 11.152077, 31.225815, -5.080265, 32.17501, -11.789337, 33.774857, -8.453361, 17.626158)
+5:3/size_in_atlas = Vector2i(3, 1)
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-18.705309, 0, -13.489405, 0.17985916, -10.251947, -1.6187286, 0.35971642, -0.71943474, 4.856186, -1.6187286, 16.906721, -1.6187286, 17.806013, 8.093643, 8, 6.4749146, 3.5971737, 8, -19.244884, 8.4533615)
+0:1/size_in_atlas = Vector2i(4, 3)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.733926, 9.532513, 5.3957615, 8, 14.657017, 22.941414, -10.833445, 22.941414, -5.7353516, 15.294277)
+1:5/size_in_atlas = Vector2i(3, 3)
+1:5/0 = 0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.568798, 11.789337, 9.240292, 11.152077, 22.622784, 22.941414, -10.514814, 25.17183, -14.338383, 21.348259, -22.304152, 19.117844)
+4:5/size_in_atlas = Vector2i(4, 3)
+4:5/0 = 0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 10.196186, 24.853199, -13.38249, 23.260044)
+8:6/size_in_atlas = Vector2i(4, 2)
+8:6/0 = 0
+8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21.348259, 4.4608307, 10.8334465, 6.691246, 15.294277, 15.612907, -21.029629, 14.657017, -26.446352, 10.8334465)
+
+[sub_resource type="TileSet" id="TileSet_3dryh"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_wrm1d")
+
 [node name="Main" type="Node2D"]
+position = Vector2(9, 14)
 script = ExtResource("1_wowpa")
 metadata/_edit_group_ = true
 
@@ -41,22 +53,6 @@ scale = Vector2(3, 3)
 texture = ExtResource("1_ebmjs")
 centered = false
 
-[node name="Fonte" type="Sprite2D" parent="."]
-position = Vector2(1550, 1475)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_wrm1d")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-visible = false
-rotation = -0.000795173
-scale = Vector2(5, 5)
-tile_map_data = PackedByteArray("AAAbACAAAAAAAAEAAAAVABQAAAAEAAUAAAALABYAAAAFAAMAAAAgABoAAAAIAAYAAAAMAB8AAAAIAAYAAAAbAAUAAAABAAUAAAARAB0AAAAIAAAAAAAHAB0AAAAAAAEAAAAYACAAAAABAAUAAAAIABQAAAAAAAEAAAAQABUAAAABAAUAAAAaABcAAAAAAAEAAAAWABUAAAAIAAAAAAAHABAAAAABAAUAAAAhABgAAAAIAAAAAAAVABwAAAAAAAEAAAAVAB0AAAAIAAYAAAARABkAAAAIAAAAAAAVABgAAAAFAAMAAAAgAAQAAAAIAAAAAAAfAAYAAAAFAAMAAAAPABQAAAAAAAEAAAAEABUAAAAIAAAAAAAOABoAAAAEAAUAAAAbAA0AAAAEAAUAAAAZAAwAAAAFAAMAAAAdAA4AAAABAAUAAAAZAA8AAAAAAAEAAAAHAAcAAAAIAAYAAAAFAAoAAAAAAAEAAAAGAAwAAAAFAAMAAAAHAAsAAAAIAAYAAAAIABwAAAAFAAMAAAANAAQAAAAEAAUAAAALAAYAAAABAAUAAAAgAAoAAAAIAAYAAAAKABQAAAAIAAAAAAAHACAAAAABAAUAAAAJAA8AAAAAAAEAAAAQAAsAAAAEAAUAAAAeABMAAAAIAAAAAAAWABAAAAAFAAMAAAAaAB8AAAAIAAYAAAAVAAoAAAABAAUAAAAJAAYAAAAEAAUAAAAFACAAAAAAAAEAAAA=")
-tile_set = SubResource("TileSet_3dryh")
-
-[node name="sdc15" parent="." instance=ExtResource("5_wowpa")]
-position = Vector2(1550, 1650)
-scale = Vector2(1.01233, 1)
-
 [node name="ZombiePath" type="Path2D" parent="."]
 scale = Vector2(1, -11.2651)
 curve = SubResource("Curve2D_wowpa")
@@ -64,6 +60,28 @@ curve = SubResource("Curve2D_wowpa")
 [node name="ZombieSpawnLocation" type="PathFollow2D" parent="ZombiePath"]
 position = Vector2(3064, -1.86416)
 rotation = -1.658893
+
+[node name="sdc15" parent="." instance=ExtResource("5_wowpa")]
+position = Vector2(1550, 1650)
+scale = Vector2(1.01233, 1)
+
+[node name="Fonte" type="StaticBody2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="Fonte"]
+position = Vector2(1543, 1532)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_i6g32")
+
+[node name="Sprite" type="Sprite2D" parent="Fonte"]
+position = Vector2(1540.0001, 1477)
+scale = Vector2(0.5185547, 0.5185547)
+texture = ExtResource("2_wrm1d")
+
+[node name="Trees" type="TileMapLayer" parent="."]
+rotation = -0.000795173
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("AAAbACAAAAAAAAEAAAAVABQAAAAEAAUAAAALABYAAAAFAAMAAAAgABoAAAAIAAYAAAAMAB8AAAAIAAYAAAAbAAUAAAABAAUAAAARAB0AAAAIAAAAAAAHAB0AAAAAAAEAAAAYACAAAAABAAUAAAAIABQAAAAAAAEAAAAQABUAAAABAAUAAAAaABcAAAAAAAEAAAAWABUAAAAIAAAAAAAHABAAAAABAAUAAAAhABgAAAAIAAAAAAAVABwAAAAAAAEAAAAVAB0AAAAIAAYAAAARABkAAAAIAAAAAAAVABgAAAAFAAMAAAAgAAQAAAAIAAAAAAAfAAYAAAAFAAMAAAAPABQAAAAAAAEAAAAEABUAAAAIAAAAAAAOABoAAAAEAAUAAAAbAA0AAAAEAAUAAAAZAAwAAAAFAAMAAAAdAA4AAAABAAUAAAAZAA8AAAAAAAEAAAAHAAcAAAAIAAYAAAAFAAoAAAAAAAEAAAAGAAwAAAAFAAMAAAAHAAsAAAAIAAYAAAAIABwAAAAFAAMAAAANAAQAAAAEAAUAAAALAAYAAAABAAUAAAAgAAoAAAAIAAYAAAAKABQAAAAIAAAAAAAHACAAAAABAAUAAAAJAA8AAAAAAAEAAAAQAAsAAAAEAAUAAAAeABMAAAAIAAAAAAAWABAAAAAFAAMAAAAaAB8AAAAIAAYAAAAVAAoAAAABAAUAAAAJAAYAAAAEAAUAAAAFACAAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_3dryh")
 
 [node name="ZombieTimer" type="Timer" parent="."]
 
