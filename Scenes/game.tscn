@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://bwny1c4xs3aj0"]
+[gd_scene load_steps=10 format=4 uid="uid://bwny1c4xs3aj0"]
 
 [ext_resource type="Texture2D" uid="uid://bwykvfnpindea" path="res://Assets/Fase1.png" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://dksghxqgk46fv" path="res://Scripts/game.gd" id="1_wowpa"]
 [ext_resource type="Texture2D" uid="uid://drub32vxys6kr" path="res://DeadTree/DeadBush.png" id="2_qxrlw"]
 [ext_resource type="Texture2D" uid="uid://6uh6cgo6f3a" path="res://Assets/Fonte.png" id="2_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://6xx1q8dlwcvt" path="res://Scenes/player.tscn" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://cxcaglyd5lilq" path="res://Scenes/hud.tscn" id="6_i6g32"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
 texture = ExtResource("2_qxrlw")
@@ -62,8 +63,10 @@ curve = SubResource("Curve2D_wowpa")
 
 [node name="ZombieSpawnLocation" type="PathFollow2D" parent="ZombiePath"]
 position = Vector2(3064, -1.86416)
-rotation = -1.65889
+rotation = -1.658893
 
 [node name="ZombieTimer" type="Timer" parent="."]
+
+[node name="Hud" parent="." instance=ExtResource("6_i6g32")]
 
 [connection signal="timeout" from="ZombieTimer" to="." method="zombie_timeout"]

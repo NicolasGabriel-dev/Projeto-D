@@ -12,17 +12,17 @@ config_version=5
 
 config/name="Projeto D"
 run/main_scene="uid://bwny1c4xs3aj0"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=516
-window/size/viewport_height=516
+window/size/viewport_width=1080
+window/size/viewport_height=720
 window/size/resizable=false
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/aspect="ignore"
+window/stretch/mode="canvas_items"
 
 [dotnet]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c77dc224u5msv"]
+[gd_scene load_steps=4 format=3 uid="uid://6ttc53lv8nl1"]
 
 [ext_resource type="Script" uid="uid://dtoxp33kgtqwr" path="res://Scripts/gun.gd" id="1_ui64p"]
 [ext_resource type="Texture2D" uid="uid://bggcxyceb6xa0" path="res://Assets/revoler.png" id="3_ui64p"]
