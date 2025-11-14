@@ -31,5 +31,6 @@ anchor_bottom = 0.49400002
 grow_vertical = 2
 text = "Shop"
 
+[connection signal="start_game" from="." to="." method="_on_start_game"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]

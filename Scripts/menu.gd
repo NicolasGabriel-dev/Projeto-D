@@ -12,7 +12,3 @@ func _on_start_button_pressed() -> void:
 func _on_shop_button_pressed() -> void:
 	$ShopButton.hide()
 	toggle_shop.emit()
-
-
-func _on_start_game() -> void:
-	pass # Replace with function body.

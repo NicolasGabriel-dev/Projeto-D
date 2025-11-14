@@ -12,5 +12,6 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Menu" parent="." instance=ExtResource("2_6fbih")]
+visible = false
 
 [node name="InGameHud" parent="." instance=ExtResource("3_t1xeu")]
